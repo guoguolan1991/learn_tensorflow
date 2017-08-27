@@ -4,6 +4,7 @@
 
 from gensim.models import Word2Vec
 import tensorflow as tf
+import numpy as np
 from tensorflow.contrib.tensorboard.plugins import projector
 
 # loading your gensim
