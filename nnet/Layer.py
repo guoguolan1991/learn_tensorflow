@@ -7,7 +7,6 @@ from ConstNode import ConstNode
 class Layer(object):
     def __init__(self, layer_index, node_count):
         '''
-        
         :param layer_index: 层编号
         :param node_count: 层所包含的节点个数
         '''
