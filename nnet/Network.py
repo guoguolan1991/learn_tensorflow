@@ -48,7 +48,7 @@ class Network(object):
         '''
         output_nodes = self.layers[-1].nodes
         for i in range(len(label)):
-            output_nodes[i].calc_output_layer_delta([label[i]])
+            output_nodes[i].calc_output_layer_delta(label[i])
         for layer in self.layers[-2::-1]:
             for node in layer.nodes:
                 node.calc_hidden_layer_delta()

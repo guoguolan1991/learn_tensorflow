@@ -16,7 +16,7 @@ class Layer(object):
             self.nodes.append(Node(layer_index, i))
         self.nodes.append(ConstNode(layer_index, node_count))
 
-    def set_out(self, data):
+    def set_output(self, data):
         '''
         设置层的输出，当曾是输入层的时候会用到
         :param data: 
