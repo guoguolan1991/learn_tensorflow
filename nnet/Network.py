@@ -72,7 +72,9 @@ class Network(object):
                     conn.calc_gradient()
 
     def get_gradient(self, label, sample):
-        pass
+        self.predict(sample)
+        self.calc_delta(label)
+        self.calc_gradient()
 
     def predict(self, sample):
         '''
