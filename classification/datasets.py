@@ -8,6 +8,7 @@
 -------------------------------------------------
 """
 __author__ = 'Miller'
+from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
 from setting import *
 
 
@@ -49,3 +50,27 @@ class datasets(object):
         all_datas = open(sougou_all_news).read().split('\n')
         return all_datas
 
+    @staticmethod
+    def load_sklearn_format():
+        train_datas, train_labels, test_datas, test_labels = datasets.load()
+        all_data = train_datas + test_datas
+        count_v0 = CountVectorizer()
+        counts_all = count_v0.fit_transform(all_data)
+
+        count_v1 = CountVectorizer(vocabulary=count_v0.vocabulary_)
+        counts_train = count_v1.fit_transform(train_datas)
+        print "the shape of train is " + repr(counts_train.shape)
+
+        count_v2 = CountVectorizer(vocabulary=count_v0.vocabulary_)
+        counts_test = count_v2.fit_transform(test_datas)
+        print "the shape of test is " + repr(counts_test.shape)
+
+        tfidftransformer = TfidfTransformer()
+        train_data = tfidftransformer.fit(counts_train).transform(counts_train)
+        test_data = tfidftransformer.fit(counts_test).transform(counts_test)
+
+        x_train = train_data
+        y_train = train_labels
+        x_test = test_data
+        y_test = test_labels
+        return x_train, y_train, x_test, y_test
