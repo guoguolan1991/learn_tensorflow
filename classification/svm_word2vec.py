@@ -1,12 +1,21 @@
-# coding:utf-8
+# -*- coding:utf-8 -*-
+"""
+-------------------------------------------------
+   File Name:     svm_word2vec
+   Description:   线性svm做分类
+   Author:        Miller
+   date：         2017/9/2 0005
+-------------------------------------------------
+"""
+__author__ = 'Miller'
+
 import sys
 import gensim
 import numpy as np
 from sklearn.svm import SVC
+from setting import *
 reload(sys)
 sys.setdefaultencoding('utf8')
-
-VECTOR_DIR = '../data/wiki/wiki.cn.text.jian.model'
 
 
 class svm_word2vec(object):
@@ -30,10 +39,10 @@ class svm_word2vec(object):
         return result
 
 if __name__ == '__main__':
-    train_docs = open('../data/sougou/train_contents.txt').read().split('\n')
-    train_labels = open('../data/sougou/train_labels.txt').read().split('\n')
-    test_docs = open('../data/sougou/test_contents.txt').read().split('\n')
-    test_labels = open('../data/sougou/test_labels.txt').read().split('\n')
+    train_docs = open(sougou_train_news).read().split('\n')
+    train_labels = open(sougou_train_labels).read().split('\n')
+    test_docs = open(sougou_test_news).read().split('\n')
+    test_labels = open(sougou_test_labels).read().split('\n')
     svm_word2vec = svm_word2vec()
     x_train = svm_word2vec.data_vector(train_docs)
     x_test = svm_word2vec.data_vector(test_docs)
@@ -46,9 +55,9 @@ if __name__ == '__main__':
     print 'SVM...'
     svclf = SVC(kernel='linear')
     svclf.fit(x_train, y_train)
-    preds = svclf.predict(x_test)
+    predictions = svclf.predict(x_test)
     num = 0
-    preds = preds.tolist()
+    preds = predictions.tolist()
     for i, pred in enumerate(preds):
         if int(pred) == int(y_test[i]):
             num += 1
