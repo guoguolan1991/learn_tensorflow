@@ -12,7 +12,8 @@ __author__ = 'Miller'
 import sys
 import gensim
 from sklearn.svm import SVC
-from setting import *
+from datasets import datasets
+from setting import doc2vec_model
 reload(sys)
 sys.setdefaultencoding('utf8')
 
@@ -38,8 +39,8 @@ class svm_doc2vec(object):
         return x_train, x_test
 
 if __name__ == '__main__':
-    train_labels = open(sougou_train_labels).read().split('\n')
-    test_labels = open(sougou_test_labels).read().split('\n')
+    train_labels = datasets.load_train_labels()
+    test_labels = datasets.load_test_labels()
     svm_doc2vec = svm_doc2vec()
     x_train, x_test = svm_doc2vec.load_datasets()
     y_train = train_labels

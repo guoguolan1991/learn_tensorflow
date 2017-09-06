@@ -13,7 +13,8 @@ import sys
 import gensim
 import numpy as np
 from sklearn.svm import SVC
-from setting import *
+from datasets import datasets
+from setting import VECTOR_DIR
 reload(sys)
 sys.setdefaultencoding('utf8')
 
@@ -39,13 +40,10 @@ class svm_word2vec(object):
         return result
 
 if __name__ == '__main__':
-    train_docs = open(sougou_train_news).read().split('\n')
-    train_labels = open(sougou_train_labels).read().split('\n')
-    test_docs = open(sougou_test_news).read().split('\n')
-    test_labels = open(sougou_test_labels).read().split('\n')
+    train_datas, train_labels, test_datas, test_labels = datasets.load()
     svm_word2vec = svm_word2vec()
-    x_train = svm_word2vec.data_vector(train_docs)
-    x_test = svm_word2vec.data_vector(test_docs)
+    x_train = svm_word2vec.data_vector(train_datas)
+    x_test = svm_word2vec.data_vector(test_datas)
 
     print 'train doc shape: '+str(len(x_train))+' , '+str(len(x_train[0]))
     print 'test doc shape: '+str(len(x_test))+' , '+str(len(x_test[0]))
