@@ -9,12 +9,8 @@
 """
 __author__ = 'Miller'
 
-import sys
-from datasets import datasets
+from classification.datasets import datasets
 from sklearn.neighbors import KNeighborsClassifier
-
-reload(sys)
-sys.setdefaultencoding('utf8')
 
 
 if __name__ == '__main__':
@@ -28,4 +24,4 @@ if __name__ == '__main__':
         for i, pred in enumerate(precisions):
             if int(pred) == int(y_test[i]):
                 num += 1
-        print 'K= '+str(x)+', precision_score:' + str(float(num) / len(precisions))
+        print('K= '+str(x)+', precision_score:' + str(float(num) / len(precisions)))

@@ -9,14 +9,14 @@
 """
 __author__ = 'Miller'
 
-import sys
+import sys, importlib
 import gensim
 import numpy as np
 from sklearn.svm import SVC
-from datasets import datasets
-from setting import VECTOR_DIR
-reload(sys)
-sys.setdefaultencoding('utf8')
+from classification.datasets import datasets
+from classification.setting import VECTOR_DIR
+importlib.reload(sys)
+# sys.setdefaultencoding('utf8')
 
 
 class svm_word2vec(object):
@@ -32,8 +32,8 @@ class svm_word2vec(object):
             vector = np.zeros(self.EMBEDDING_DIM)
             word_num = len(words)
             for word in words:
-                if unicode(word) in self.w2v_model:
-                    vector += self.w2v_model[unicode(word)]
+                if word in self.w2v_model:
+                    vector += self.w2v_model[word]
             if word_num > 0:
                 vector = vector/word_num
             result.append(vector)
@@ -45,12 +45,12 @@ if __name__ == '__main__':
     x_train = svm_word2vec.data_vector(train_datas)
     x_test = svm_word2vec.data_vector(test_datas)
 
-    print 'train doc shape: '+str(len(x_train))+' , '+str(len(x_train[0]))
-    print 'test doc shape: '+str(len(x_test))+' , '+str(len(x_test[0]))
+    print('train doc shape: '+str(len(x_train))+' , '+str(len(x_train[0])))
+    print('test doc shape: '+str(len(x_test))+' , '+str(len(x_test[0])))
     y_train = train_labels
     y_test = test_labels
 
-    print 'SVM...'
+    print('SVM...')
     svclf = SVC(kernel='linear')
     svclf.fit(x_train, y_train)
     predictions = svclf.predict(x_test)
@@ -59,7 +59,7 @@ if __name__ == '__main__':
     for i, pred in enumerate(preds):
         if int(pred) == int(y_test[i]):
             num += 1
-    print 'precision_score:' + str(float(num) / len(preds))
+    print('precision_score:' + str(float(num) / len(preds)))
 
 
 

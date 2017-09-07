@@ -9,17 +9,16 @@
 """
 __author__ = 'Miller'
 
-import sys
+import sys, importlib
 from sklearn.naive_bayes import MultinomialNB
-from datasets import datasets
+from classification.datasets import datasets
 
-reload(sys)
-sys.setdefaultencoding('utf8')
+importlib.reload(sys)
 
 if __name__ == '__main__':
     x_train, y_train, x_test, y_test = datasets.load_sklearn_format()
 
-    print 'Naive Bayes...'
+    print('Naive Bayes...')
 
     clf = MultinomialNB(alpha=0.01)
     clf.fit(x_train, y_train)
@@ -29,4 +28,4 @@ if __name__ == '__main__':
     for i, pred in enumerate(precisions):
         if int(pred) == int(y_test[i]):
             num += 1
-    print 'precision_score:' + str(float(num) / len(precisions))
+    print('precision_score:' + str(float(num) / len(precisions)))

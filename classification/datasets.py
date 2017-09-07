@@ -9,7 +9,7 @@
 """
 __author__ = 'Miller'
 from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
-from setting import *
+from classification.setting import *
 
 
 class datasets(object):
@@ -19,15 +19,15 @@ class datasets(object):
     @staticmethod
     def load():
         print('load datasets')
-        train_datas = open(sougou_train_news).read().split('\n')
+        train_datas = open(sougou_train_news, encoding=encoding).read().split('\n')
         train_labels = open(sougou_train_labels).read().split('\n')
-        test_datas = open(sougou_test_news).read().split('\n')
+        test_datas = open(sougou_test_news, encoding=encoding).read().split('\n')
         test_labels = open(sougou_test_labels).read().split('\n')
         return train_datas, train_labels, test_datas, test_labels
 
     @staticmethod
     def load_train_datas():
-        train_datas = open(sougou_train_news).read().split('\n')
+        train_datas = open(sougou_train_news, encoding=encoding).read().split('\n')
         return train_datas
 
     @staticmethod
@@ -37,7 +37,7 @@ class datasets(object):
 
     @staticmethod
     def load_test_datas():
-        test_datas = open(sougou_test_news).read().split('\n')
+        test_datas = open(sougou_test_news, encoding=encoding).read().split('\n')
         return test_datas
 
     @staticmethod
@@ -47,7 +47,7 @@ class datasets(object):
 
     @staticmethod
     def load_all_datas():
-        all_datas = open(sougou_all_news).read().split('\n')
+        all_datas = open(sougou_all_news, encoding=encoding).read().split('\n')
         return all_datas
 
     @staticmethod
@@ -59,11 +59,11 @@ class datasets(object):
 
         count_v1 = CountVectorizer(vocabulary=count_v0.vocabulary_)
         counts_train = count_v1.fit_transform(train_datas)
-        print "the shape of train is " + repr(counts_train.shape)
+        print("the shape of train is " + repr(counts_train.shape))
 
         count_v2 = CountVectorizer(vocabulary=count_v0.vocabulary_)
         counts_test = count_v2.fit_transform(test_datas)
-        print "the shape of test is " + repr(counts_test.shape)
+        print("the shape of test is " + repr(counts_test.shape))
 
         tfidftransformer = TfidfTransformer()
         train_data = tfidftransformer.fit(counts_train).transform(counts_train)
