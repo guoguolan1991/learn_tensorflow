@@ -1,6 +1,6 @@
 # coding:utf-8
 
-from Perception import Perceptron
+from perceptron.Perception import Perceptron
 
 
 def f(x):
@@ -28,8 +28,8 @@ def train_and_perceptron():
 
 if __name__ == '__main__':
     and_perceptron = train_and_perceptron()
-    print and_perceptron
-    print '1 and 1 = %d' % and_perceptron.predict([1, 1])
-    print '0 and 0 = %d' % and_perceptron.predict([0, 0])
-    print '1 and 0 = %d' % and_perceptron.predict([1, 0])
-    print '0 and 1 = %d' % and_perceptron.predict([0, 1])
+    print(and_perceptron)
+    print('1 and 1 = %d' % and_perceptron.predict([1, 1]))
+    print('0 and 0 = %d' % and_perceptron.predict([0, 0]))
+    print('1 and 0 = %d' % and_perceptron.predict([1, 0]))
+    print('0 and 1 = %d' % and_perceptron.predict([0, 1]))

@@ -1,4 +1,5 @@
 # coding:utf-8
+from functools import reduce
 
 
 class Perceptron(object):
@@ -24,7 +25,7 @@ class Perceptron(object):
         '''
         return self.activator(
             reduce(lambda a, b: a + b,
-                   map(lambda (x, w): x * w,
+                   map(lambda x_w: x_w[0] * x_w[1],
                        zip(input_vec, self.weights)), 0.0) + self.bias
         )
 
@@ -52,7 +53,7 @@ class Perceptron(object):
         '''
         delta = label - output
         self.weights = map(
-            lambda (x, w): w + rate * delta * x,
+            lambda x_w: x_w[1] + rate * delta * x_w[0],
             zip(input_vec, self.weights)
         )
         # 更新bias
