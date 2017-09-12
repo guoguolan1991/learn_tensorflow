@@ -1,6 +1,7 @@
 # coding:utf-8
 
 # 输出恒唯1的节点
+from functools import reduce
 
 
 class ConstNode(object):
@@ -30,4 +31,3 @@ class ConstNode(object):
         )
         self.delta = self.output * (1 - self.output) * downstream_delta
 
-    

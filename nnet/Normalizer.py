@@ -1,6 +1,7 @@
 # coding:utf-8
 import random
-from Network import Network
+from functools import reduce
+from nnet.Network import Network
 
 
 class Normalizer(object):
@@ -49,9 +50,9 @@ def gradient_check(network, sample_feature, sample_label):
 
         expected_gradient = (error2 - error1) / (2 * epsilon)
 
-        print 'expected gradient: \t%f\nactual gradient: \t%f' % (
+        print('expected gradient: \t%f\nactual gradient: \t%f' % (
             expected_gradient, actual_gradient
-        )
+        ))
 
 
 def train_data_set():
@@ -74,7 +75,7 @@ def test(network, data):
     normalizer = Normalizer()
     norm_data = normalizer.norm(data)
     predict_data = network.predict(norm_data)
-    print '\ttestdata(%u)\tpredict(%u)' % (data, normalizer.denorm(predict_data))
+    print('\ttestdata(%u)\tpredict(%u)' % (data, normalizer.denorm(predict_data)))
 
 
 def correct_ratio(network):
@@ -84,7 +85,7 @@ def correct_ratio(network):
         if normalizer.denorm(network.predict(normalizer.norm(i))) == i:
             correct += 1.0
 
-    print 'correct_ratio: %.2f%%' % (correct /256 * 100)
+    print('correct_ratio: %.2f%%' % (correct /256 * 100))
 
 
 def gradient_check_test():
@@ -99,69 +100,3 @@ if __name__ == '__main__':
     train(net)
     net.dump()
     correct_ratio(net)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

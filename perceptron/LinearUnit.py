@@ -1,6 +1,6 @@
 # coding:utf-8
 
-from Perception import Perceptron
+from perceptron.Perception import Perceptron
 
 # 定义线性单元的激活函数
 f = lambda x: x
@@ -33,8 +33,8 @@ def train_linear_unit():
 
 if __name__ == '__main__':
     linear_unit = train_linear_unit()
-    print linear_unit
-    print 'Work 3.4 years, monthly salary = %.2f' % linear_unit.predict([3.4])
-    print 'Work 15 years, monthly salary = %.2f' % linear_unit.predict([15])
-    print 'Work 1.5 years, monthly salary = %.2f' % linear_unit.predict([1.5])
-    print 'Work 6.3 years, monthly salary = %.2f' % linear_unit.predict([6.3])
+    print(linear_unit)
+    print('Work 3.4 years, monthly salary = %.2f' % linear_unit.predict([3.4]))
+    print('Work 15 years, monthly salary = %.2f' % linear_unit.predict([15]))
+    print('Work 1.5 years, monthly salary = %.2f' % linear_unit.predict([1.5]))
+    print('Work 6.3 years, monthly salary = %.2f' % linear_unit.predict([6.3]))

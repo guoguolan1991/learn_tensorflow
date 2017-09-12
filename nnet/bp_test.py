@@ -1,6 +1,6 @@
 # coding:utf-8
-from mnist2data import *
-from Network import Network
+from nnet.mnist2data import *
+from nnet.Network import Network
 from datetime import datetime
 
 def get_result(vec):
@@ -35,11 +35,11 @@ def train_and_evaluate():
     while True:
         epoch += 1
         network.train(train_labels, train_data_set, 0.3, 1)
-        print '%s epoch %d finished' % (datetime.now(), epoch)
+        print('%s epoch %d finished' % (datetime.now(), epoch))
 
         if epoch % 10 == 0:
             error_ratio = evaluate(network, test_data_set, test_labels)
-            print '%s after epoch %d, error is %f' % (datetime.now(), epoch, error_ratio)
+            print('%s after epoch %d, error is %f' % (datetime.now(), epoch, error_ratio))
             if error_ratio > last_error_ratio:
                 break
             else:

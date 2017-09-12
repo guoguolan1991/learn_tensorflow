@@ -47,4 +47,4 @@ class Connections(object):
 
     def dump(self):
         for conn in self.connections:
-            print conn
+            print(conn)

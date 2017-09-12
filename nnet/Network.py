@@ -1,6 +1,6 @@
 # coding:utf-8
-from Connection import *
-from Layer import Layer
+from nnet.Connection import *
+from nnet.Layer import Layer
 # Network 对象，提供API
 
 

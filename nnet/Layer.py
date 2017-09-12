@@ -1,6 +1,6 @@
 # coding:utf-8
-from Node import Node
-from ConstNode import ConstNode
+from nnet.Node import Node
+from nnet.ConstNode import ConstNode
 # 作为node节点的集合对象，提供对node集合的操作
 
 
@@ -38,4 +38,4 @@ class Layer(object):
         打印层的信息
         '''
         for node in self.nodes:
-            print node
+            print(node)

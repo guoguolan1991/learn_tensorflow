@@ -1,6 +1,7 @@
 # coding:utf-8
 
 # 节点类，负责记录和维护节点自身信息以及与这个节点相关的上下游连接，实现输出值和误差项的计算。
+from functools import reduce
 
 sigmoid = lambda x: x
 
