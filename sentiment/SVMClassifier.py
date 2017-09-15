@@ -44,7 +44,7 @@ class SVMClassifier:
         print('SVMClassifier train over')
 
     def classify(self, data):
-        vector =  self.word2vector([data])
+        vector = self.word2vector([data])
 
         prediction = self.clf.predict(vector)
 
